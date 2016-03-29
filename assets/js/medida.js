@@ -21,7 +21,7 @@
     Medida.match = function (input) {
             var measures = '[a-z]+';
 
-            var inputRegex = XRegExp(
+            var inputRegex = xregexp.XRegExp(
                 '^(\\s*)                                                  # whitespaces \n'
                     + '(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s*)     # captures the number   \n'
                     + '((e(?<exponent> [-+]?\\d+)\\s*)?)                  # captures the exponent \n'
@@ -30,7 +30,7 @@
                     + '(\\s*)$                                            # whitespaces \n'
                 , 'xi');
 
-            return XRegExp.exec(input, inputRegex);
+            return xregexp.XRegExp.exec(input, inputRegex);
     };
 
     Medida.medidas = {};
@@ -38,9 +38,9 @@
     Medida.convertir = function(valor) {
         var measures = Medida.medidas;
 
-        measures.c = Celsius;
-        measures.f = Fahrenheit;
-        measures.k = Kelvin;
+        measures.c = temperatura.Celsius;
+        measures.f = temperatura.Fahrenheit;
+        measures.k = temperatura.Kelvin;
 
         var match = Medida.match(valor);
 

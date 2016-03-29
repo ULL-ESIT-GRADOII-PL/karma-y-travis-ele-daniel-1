@@ -1,3 +1,6 @@
+var xregexp = require('xregexp')
+var temperatura = require('./temperatura');
+
 (function(exports) {
     "use strict";
     function main() {
