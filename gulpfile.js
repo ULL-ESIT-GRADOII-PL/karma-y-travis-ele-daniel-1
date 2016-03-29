@@ -15,7 +15,7 @@ var webpack = require('webpack-stream');
 var clean = require('gulp-clean');
 
 
-var src = 'src';
+var src = 'assets';
 var vendor = 'vendor/';
 var paths = {
   html: '*.html',
@@ -43,8 +43,8 @@ gulp.task('webpack', function() {
 });
 
 gulp.task('generate-pages', function() {
-  return gulp.src('./vendor/*')
-    .pipe(ghPages());
+  return gulp.src('./vendor/**/*')
+    .pipe(ghPages('.'));
 });
 
 gulp.task('clean', function () {
@@ -58,5 +58,5 @@ gulp.task('watch', function () {
   gulp.watch(paths.js, ['webpack']);
 });
 
-// Por defecto, limpiamos y rehacemos todo de nuevo
-gulp.task('default', ['clean', 'minify-css', 'minify-html', 'webpack']);
+// Por defecto, rehacemos todo de nuevo
+gulp.task('default', ['minify-css', 'minify-html', 'webpack']);
