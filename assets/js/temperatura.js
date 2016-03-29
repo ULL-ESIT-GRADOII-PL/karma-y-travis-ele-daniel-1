@@ -1,3 +1,5 @@
+var medida = require('./medida');
+
 (function(exports) {
     "use strict";
 
