@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-// watch permite tener tareas ejecuntdose en segundo plano cuando ocurre un
+// watch permite tener tareas ejecuntádose en segundo plano cuando ocurre un
 // determinado evento como guardar un archivo.
 var watch = require('gulp-watch');
 var htmlmin = require('gulp-htmlmin');
