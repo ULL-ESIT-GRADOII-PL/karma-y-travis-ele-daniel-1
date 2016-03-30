@@ -4,7 +4,7 @@
   "description": "Conversor javascript de tipos",
   "main": "conversor.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "test": "./node_modules/.bin/karma start --single-run",
     "mocha": "mocha test",
     "chai": "curl https://raw.githubusercontent.com/chaijs/chai/master/chai.js -o test/chai.js",
     "sinon": "curl http://sinonjs.org/releases/sinon-1.12.2.js -o vendor/sinon-1.12.2.js",
@@ -31,7 +31,9 @@
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
     "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
     "karma-html2js-preprocessor": "^0.1.0",
     "karma-mocha": "^0.2.2",
     "karma-sourcemap-loader": "^0.3.7",
