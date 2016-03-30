@@ -16,19 +16,13 @@
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="assets/css/normalize.css">
-  <link rel="stylesheet" href="assets/css/skeleton.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="skeleton.css">
+  <link rel="stylesheet" href="custom.css">
 
-  <!-- JS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="xregexp-all.js"></script>
-  <script type="text/javascript" src="assets/js/medida.js"></script>
-  <script type="text/javascript" src="assets/js/temperatura.js"></script>
-  <script type="text/javascript" src="assets/js/conversor.js"></script>
-  
+
   <!-- FAVICON
-  -------------------------------------------------- -->
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="assets/images/favicon.ico">
 
 </head>
@@ -49,26 +43,32 @@
             e en minúscula.
         </p>
         <label>Introduzca un valor</label>
-        <input id="convert" class="u-full-width" type="text" autofocus oninput="main();" placeholder="Introduzca un valor">
+        <input id="convert" class="u-full-width" type="text" autofocus placeholder="Introduzca un valor">
         <span id="converted"></span>
       </div>
     </div>
   </div>
-  
+
   <footer>
       <div class="container">
         <div class="row">
-          <div class="one-half column">
+          <div class="one-third column">
               <a href="https://github.com/ULL-ESIT-GRADOII-PL/object-oriented-programming-in-js-ele-daniel">Repositorio del código</a>
           </div>
-          <div class="one-half column">
+          <div class="one-third column">
               <a href="http://alu0100783230.github.io/">Web del autor, Daniel</a>
           </div>
-          <div class="one-half column">
+          <div class="one-third column">
               <a href="http://elediaz.github.io/public/portafolio.html">Web del autor, Eleazar</a>
           </div>
         </div>
       </div>
   </footer>
 </body>
+
+<!-- JS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script type="text/javascript" src="vendor.bundle.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
 </html>

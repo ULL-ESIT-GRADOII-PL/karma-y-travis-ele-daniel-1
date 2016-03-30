@@ -1,3 +1,6 @@
+var XRegExp     = require("xregexp");
+var temperatura = require("./temperatura");
+
 (function(exports) {
     "use strict";
 
@@ -20,8 +23,7 @@
 
     Medida.match = function (input) {
             var measures = '[a-z]+';
-
-            var inputRegex = xregexp.XRegExp(
+            var inputRegex = XRegExp(
                 '^(\\s*)                                                  # whitespaces \n'
                     + '(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s*)     # captures the number   \n'
                     + '((e(?<exponent> [-+]?\\d+)\\s*)?)                  # captures the exponent \n'
@@ -30,7 +32,7 @@
                     + '(\\s*)$                                            # whitespaces \n'
                 , 'xi');
 
-            return xregexp.XRegExp.exec(input, inputRegex);
+            return XRegExp.exec(input, inputRegex);
     };
 
     Medida.medidas = {};
@@ -48,7 +50,7 @@
             var numero = match.value,
                 tipo   =  match.tipo,
                 destino = match.destino;
-            try {
+            //try {
                 var source = new measures[tipo[0].toLowerCase()](numero);  // new Fahrenheit(32) //asumimos que la priemra letra es el tipo correcto
                 var target = "to"+measures[destino[0].toLowerCase()].name; // "toCelsius"
                 var checkTarget = new measures[destino[0].toLowerCase()](0);
@@ -56,10 +58,10 @@
                   throw "Error de tipos";
                 }
                 return source[target]().toFixed(2) + " "+target; // "0 Celsius"
-            }
-            catch(err) {
-                return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
-            }
+            //}
+            /*catch(err) {
+                return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"' + err;
+            }*/
         }
         else
             return "Introduzca una temperatura valida: 330e-1 F to C";
