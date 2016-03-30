@@ -21,6 +21,7 @@
   },
   "homepage": "https://ULL-ESIT-GRADOII-PL.github.com/mocha-y-chai-ele-daniel-1/",
   "devDependencies": {
+    "blanket": "^1.2.3",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
