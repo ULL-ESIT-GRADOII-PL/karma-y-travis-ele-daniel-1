@@ -1,9 +1,12 @@
+var chai = require('chai');
+var temp = require("../assets/js/temperatura");
+
 var assert = chai.assert;
 
 describe('Regex', function() {
     describe('Celsius', function () {
         it('should match any substring of "Celsius"', function () {
-            var medida = new Celsius();
+            var medida = new temp.Celsius();
             assert.notEqual(false, medida.check("Celsius"));
             assert.notEqual(false, medida.check("Celsi"));
             assert.notEqual(false, medida.check("Cel"));
@@ -16,7 +19,7 @@ describe('Regex', function() {
 
     describe('Kelvin', function () {
         it('should match any substring of "Kelvin"', function () {
-            medida = new Kelvin();
+            medida = new temp.Kelvin();
             assert.notEqual(false, medida.check("Kelvin"));
             assert.notEqual(false, medida.check("Kel"));
             assert.notEqual(false, medida.check("K"));
@@ -27,7 +30,7 @@ describe('Regex', function() {
 
     describe('Fahrenheit', function () {
         it('should match any substring of "Fahrenheit"', function () {
-            medida = new Kelvin();
+            medida = new temp.Kelvin();
             assert.notEqual(false, medida.check("Kelvin"));
             assert.notEqual(false, medida.check("Kel"));
             assert.notEqual(false, medida.check("K"));
@@ -39,7 +42,7 @@ describe('Regex', function() {
 
 describe('Conversions', function() {
     describe('Celsius', function () {
-        var medida = new Celsius(0);
+        var medida = new temp.Celsius(0);
         it('toFahrenheit"', function () {
             assert.equal(32, medida.toFahrenheit());
         });
@@ -49,7 +52,7 @@ describe('Conversions', function() {
         });
     });
     describe('Kelvin', function () {
-        var medida = new Kelvin(273);
+        var medida = new temp.Kelvin(273);
         it('toFahrenheit"', function () {
             assert.equal(32, medida.toFahrenheit());
         });
@@ -59,7 +62,7 @@ describe('Conversions', function() {
         });
     });
     describe('Fahrenheit', function () {
-        var medida = new Fahrenheit(32);
+        var medida = new temp.Fahrenheit(32);
         it('toCelsius"', function () {
             assert.equal(0, medida.toCelsius());
         });
