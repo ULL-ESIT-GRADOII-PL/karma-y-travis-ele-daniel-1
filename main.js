@@ -1,2 +1,208 @@
-webpackJsonp([0],[function(e,t,n){e.exports=n(1)},function(e,t,n){n(2),n(11);!function(e){"use strict";function t(){var e=document.getElementById("convert").value,t=document.getElementById("converted");return t.innerHTML=Medida.convertir(e),!1}e.main=t}(this)},,,,,,,,,,function(e,t,n){n(12);!function(e){"use strict";function t(e,t){Medida.call(this,e,t)}function n(e){t.call(this,e,"c")}function r(e){t.call(this,e,"f")}function i(e){t.call(this,e,"k")}n.prototype={name:"Celsius",check:function(e){return e.match(/(^c(?:e(?:l(?:s(?:i(?:u(?:s)?)?)?)?)?)?$)/i)},toFahrenheit:function(){return 9*this.valor/5+32},toCelsius:function(){return this.valor},toKelvin:function(){return this.valor+273}},r.prototype={name:"Fahrenheit",check:function(e){return e.match(/(^f(?:a(?:h(?:r(?:e(?:n(?:h(?:e(?:i(?:t)?)?)?)?)?)?)?)?)?$)/i)},toCelsius:function(){return 5*(this.valor-32)/9},toFahrenheit:function(){return this.valor},toKelvin:function(){return this.toCelsius(this.valor)+273}},i.prototype={name:"Kelvin",check:function(e){return e.match(/(k(?:e(?:l(?:v(?:i(?:n)?)?)?)?)?)/i)},toKelvin:function(){return this.valor},toCelsius:function(){return this.valor-273},toFahrenheit:function(){return 9*this.toCelsius(this.valor)/5+32}},e.Temperatura=t,e.Celsius=n,e.Fahrenheit=r,e.Kelvin=i}(this)},function(e,t){!function(e){"use strict";function t(e,t){if(t)this.valor=parseFloat(e),this.tipo=t;else{var n=XRegExp("(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s* ) # Get number \n((e(?<exponent> [-+]?\\d+)\\s*)?)               # Get Exponent \n(?<measure>     [a-zA-Z]+)                      # Get kind"),r=XRegexExp.exec(e,n);this.valor=parseFloat(r.value)*Math.pow(10,parseInt(r.exponent)),this.tipo=r.measure}}t.match=function(e){var t="[a-z]+",n=xregexp.XRegExp("^(\\s*)                                                  # whitespaces \n(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s*)     # captures the number   \n((e(?<exponent> [-+]?\\d+)\\s*)?)                  # captures the exponent \n(?<tipo>       "+t+")                   # Capture kind of value \n((?:\\s+to)?\\s+ (?<destino>"+t+'))?    # Get "to" syntax \n(\\s*)$                                            # whitespaces \n',"xi");return xregexp.XRegExp.exec(e,n)},t.medidas={},t.convertir=function(e){var n=t.medidas;n.c=temperatura.Celsius,n.f=temperatura.Fahrenheit,n.k=temperatura.Kelvin;var r=t.match(e);if(!r)return"Introduzca una temperatura valida: 330e-1 F to C";var i=r.value,o=r.tipo,a=r.destino;try{var s=new(n[o[0].toLowerCase()])(i),u="to"+n[a[0].toLowerCase()].name,c=new(n[a[0].toLowerCase()])(0);if(!s.check(o)||!c.check(a))throw"Error de tipos";return s[u]().toFixed(2)+" "+u}catch(h){return'Desconozco como convertir desde "'+o+'" hasta "'+a+'"'}},e.Medida=t}(this)}]);
+webpackJsonp([0],[
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var xregexp = __webpack_require__(2);
+	var temperatura = __webpack_require__(11);
+	
+	(function(exports) {
+	    "use strict";
+	    document.getElementById('convert').addEventListener('input', main);
+	    function main() {
+	        var valor     = document.getElementById('convert').value,
+	            elemento  = document.getElementById('converted');
+	        elemento.innerHTML = temperatura.Medida.convertir(valor);
+	        return false;
+	    }
+	})(this);
+
+
+/***/ },
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var XRegExp     = __webpack_require__(2);
+	var temperatura = __webpack_require__(12);
+	
+	(function(exports) {
+	    "use strict";
+	
+	    function Medida(valor,tipo) {
+	        if (!tipo) {
+	            var param = XRegExp(""
+	                                + "(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s* ) # Get number \n"
+	                                + "((e(?<exponent> [-+]?\\d+)\\s*)?)               # Get Exponent \n"
+	                                + "(?<measure>     [a-zA-Z]+)                      # Get kind");
+	            var m = XRegexExp.exec(valor, param);
+	            this.valor = parseFloat(m.value) * Math.pow(10, parseInt(m.exponent));
+	            this.tipo  = m.measure;
+	        }
+	        else {
+	            this.valor = parseFloat(valor);
+	            this.tipo  = tipo;
+	        }
+	
+	    }
+	
+	    Medida.match = function (input) {
+	            var measures = '[a-z]+';
+	            var inputRegex = XRegExp(
+	                '^(\\s*)                                                  # whitespaces \n'
+	                    + '(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s*)     # captures the number   \n'
+	                    + '((e(?<exponent> [-+]?\\d+)\\s*)?)                  # captures the exponent \n'
+	                    + '(?<tipo>       ' + measures + ')                   # Capture kind of value \n'
+	                    + '((?:\\s+to)?\\s+ (?<destino>' + measures + '))?    # Get "to" syntax \n'
+	                    + '(\\s*)$                                            # whitespaces \n'
+	                , 'xi');
+	
+	            return XRegExp.exec(input, inputRegex);
+	    };
+	
+	    Medida.medidas = {};
+	
+	    Medida.convertir = function(valor) {
+	        var measures = Medida.medidas;
+	
+	        measures.c = temperatura.Celsius;
+	        measures.f = temperatura.Fahrenheit;
+	        measures.k = temperatura.Kelvin;
+	
+	        var match = Medida.match(valor);
+	
+	        if (match) {
+	            var numero = match.value,
+	                tipo   =  match.tipo,
+	                destino = match.destino;
+	            //try {
+	                var source = new measures[tipo[0].toLowerCase()](numero);  // new Fahrenheit(32) //asumimos que la priemra letra es el tipo correcto
+	                var target = "to"+measures[destino[0].toLowerCase()].name; // "toCelsius"
+	                var checkTarget = new measures[destino[0].toLowerCase()](0);
+	                if(!source.check(tipo) || !checkTarget.check(destino)) {
+	                  throw "Error de tipos";
+	                }
+	                return source[target]().toFixed(2) + " "+target; // "0 Celsius"
+	            //}
+	            /*catch(err) {
+	                return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"' + err;
+	            }*/
+	        }
+	        else
+	            return "Introduzca una temperatura valida: 330e-1 F to C";
+	    };
+	
+	    exports.Medida = Medida;
+	})(this);
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var medida = __webpack_require__(11);
+	
+	(function(exports) {
+	    "use strict";
+	
+	    function Temperatura(valor, tipo) {
+	        medida.Medida.call(this, valor, tipo);
+	    }
+	
+	    function Celsius(valor) {
+	        Temperatura.call(this, valor, "c");
+	    }
+	
+	    Celsius.prototype = {
+	        name: "Celsius",
+	
+	        check: function(tipo) {
+	          return tipo.match(/(^c(?:e(?:l(?:s(?:i(?:u(?:s)?)?)?)?)?)?$)/i);
+	        },
+	
+	        toFahrenheit: function() {
+	            return ((this.valor * 9/5)+32);
+	        },
+	
+	        toCelsius: function() {
+	            return this.valor;
+	        },
+	
+	        toKelvin: function() {
+	          return this.valor + 273;
+	        }
+	    };
+	
+	    function Fahrenheit(valor) {
+	        Temperatura.call(this, valor, "f");
+	    }
+	
+	    Fahrenheit.prototype = {
+	        name: "Fahrenheit",
+	
+	        check: function(tipo) {
+	          return tipo.match(/(^f(?:a(?:h(?:r(?:e(?:n(?:h(?:e(?:i(?:t)?)?)?)?)?)?)?)?)?$)/i);
+	        },
+	
+	        toCelsius: function() {
+	            return ((this.valor - 32)*5/9);
+	        },
+	
+	        toFahrenheit: function() {
+	            return this.valor;
+	        },
+	
+	        toKelvin: function() {
+	          return this.toCelsius(this.valor) + 273;
+	        }
+	    };
+	
+	    function Kelvin(valor) {
+	        Temperatura.call(this, valor, "k");
+	    }
+	
+	    Kelvin.prototype = {
+	        name: "Kelvin",
+	
+	        check: function(tipo) {
+	          return tipo.match(/(k(?:e(?:l(?:v(?:i(?:n)?)?)?)?)?)/i);
+	        },
+	
+	        toKelvin: function() {
+	            return this.valor;
+	        },
+	
+	        toCelsius: function() {
+	            return ((this.valor) - 273);
+	        },
+	
+	        toFahrenheit: function() {
+	            return ((this.toCelsius(this.valor) * 9/5)+32);
+	        }
+	    };
+	
+	    exports.Temperatura = Temperatura;
+	    exports.Celsius = Celsius;
+	    exports.Fahrenheit = Fahrenheit;
+	    exports.Kelvin = Kelvin;
+	
+	})(this);
+
+
+/***/ }
+]);
 //# sourceMappingURL=main.js.map
