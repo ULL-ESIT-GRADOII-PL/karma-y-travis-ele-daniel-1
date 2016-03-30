@@ -50,7 +50,7 @@ var temperatura = require("./temperatura");
             var numero = match.value,
                 tipo   =  match.tipo,
                 destino = match.destino;
-            //try {
+            try {
                 var source = new measures[tipo[0].toLowerCase()](numero);  // new Fahrenheit(32) //asumimos que la priemra letra es el tipo correcto
                 var target = "to"+measures[destino[0].toLowerCase()].name; // "toCelsius"
                 var checkTarget = new measures[destino[0].toLowerCase()](0);
@@ -58,10 +58,10 @@ var temperatura = require("./temperatura");
                   throw "Error de tipos";
                 }
                 return source[target]().toFixed(2) + " "+target; // "0 Celsius"
-            //}
-            /*catch(err) {
+            }
+            catch(err) {
                 return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"' + err;
-            }*/
+            }
         }
         else
             return "Introduzca una temperatura valida: 330e-1 F to C";
