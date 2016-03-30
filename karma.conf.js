@@ -22,9 +22,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '/vendor/test.js',
-      'test/test.js',
-      {pattern: 'test/test.js', included: false}
+      'vendor/test.js',
+      // {pattern: 'test/test.js', included: false}
     ],
 
     // list of files to exclude
@@ -35,8 +34,16 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'test/test.js': ['webpack'],
     },
 
+    webpack: {
+        // karma watches the test entry points
+        // (you don't need to specify the entry option)
+        // webpack watches dependencies
+
+        // webpack configuration
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

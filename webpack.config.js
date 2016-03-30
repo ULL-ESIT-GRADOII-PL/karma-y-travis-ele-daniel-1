@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
+
   resolve: {
       extensions: ['','.webpack.js', '.web.js', '.js']
   },
@@ -15,6 +16,7 @@ module.exports = {
 
   // Your app configuration
   entry: {
+      test: ['mocha!./test/test.js'],
       main: ['./assets/js/conversor.js'],
       vendor: ['xregexp']
   },
