@@ -7,15 +7,22 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-    
+
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs'],
+    'plugins': [
+        'karma-mocha',
+        'karma-firefox-launcher',
+        'karma-chai'
+    ],
+
+
+    frameworks: ['mocha', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'test.js',
+      '/test/test.js',
       'test/test.js',
       {pattern: 'test/test.js', included: false}
     ],
@@ -57,7 +64,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox', 'Chrome', 'PhantomJS'],
+    browsers: ['Firefox'],
 
 
     // Continuous Integration mode

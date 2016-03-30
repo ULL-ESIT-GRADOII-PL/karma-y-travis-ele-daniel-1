@@ -1,6 +1,6 @@
-var chai = require('chai');
 var temp = require('../assets/js/temperatura');
 var medi = require('../assets/js/medida');
+var chai = require('chai');
 
 var assert = chai.assert;
 
