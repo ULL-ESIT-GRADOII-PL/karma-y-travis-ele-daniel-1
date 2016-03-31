@@ -1,13 +1,10 @@
-
+var chai = require('chai');
+var temp = require('../assets/js/temperatura');
+var medi = require('../assets/js/medida');
 
 var assert = chai.assert;
 
 describe('Regex', function() {
-
-  var temp = require(['../assets/js/temperatura']);
-  var medi = require(['../assets/js/medida']);
-  var chai = require(['chai']);
-
     describe('Celsius', function () {
         it('should match any substring of "Celsius"', function () {
             var medida = new temp.Celsius();
@@ -57,7 +54,6 @@ describe('Regex', function() {
     });
 });
 
-
 // describe('HTML testing', function() {
 //     var sandbox;
 
@@ -75,9 +71,6 @@ describe('Regex', function() {
 // });
 
 describe('Conversions', function() {
-  var temp = require(['../assets/js/temperatura']);
-  var medi = require(['../assets/js/medida']);
-  var chai = require(['chai']);
     describe('Celsius', function () {
         it('toFahrenheit"', function () {
             assert.equal(32, new temp.Celsius(0).toFahrenheit());

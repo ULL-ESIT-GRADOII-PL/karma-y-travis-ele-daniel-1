@@ -14,12 +14,10 @@ module.exports = function(config) {
             'karma-sourcemap-loader',
             'karma-chai',
             'karma-html2js-preprocessor',
-            'karma-webpack',
-            'karma-requirejs' 
+            'karma-webpack'
         ],
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-
     frameworks: ['mocha', 'chai'],
 
     client: {
@@ -31,7 +29,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/requirejs/require.js',
       'test/test.js',
       'test/index.html'
       // {pattern: 'test/test.js', included: false}
@@ -40,7 +37,7 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {      
+    preprocessors: {
       'test/test.js': ['webpack', 'sourcemap'],
       'test/index.html': ['html2js']
     },
