@@ -10,9 +10,12 @@ module.exports = function(config) {
     plugins: [
             'karma-mocha',
             'karma-firefox-launcher',
+            'karma-chrome-launcher',
+            'karma-sourcemap-loader',
             'karma-chai',
             'karma-html2js-preprocessor',
-            'karma-webpack'
+            'karma-webpack',
+            'karma-requirejs' 
         ],
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -21,31 +24,32 @@ module.exports = function(config) {
 
     client: {
           mocha: {
+            reporter: 'html',
             ui: 'bdd'
           }
     },
 
     // list of files / patterns to load in the browser
     files: [
-
-      'test/test.js'
+      'node_modules/requirejs/require.js',
+      'test/test.js',
+      'test/index.html'
       // {pattern: 'test/test.js', included: false}
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      'test/test.js': ['webpack'],
-      'testk.html': ['html2js']
-
+    preprocessors: {      
+      'test/test.js': ['webpack', 'sourcemap'],
+      'test/index.html': ['html2js']
     },
 
     webpack: {
         // karma watches the test entry points
         // (you don't need to specify the entry option)
         // webpack watches dependencies
-
+        devtool: 'inline-source-map'
         // webpack configuration
     },
 
@@ -75,11 +79,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['Firefox'], // , 'Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
-  })
-}
+    singleRun: true
+  });
+};

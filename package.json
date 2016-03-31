@@ -4,7 +4,7 @@
   "description": "Conversor javascript de tipos",
   "main": "conversor.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "test": "gulp && ./node_modules/.bin/karma start --single-run",
     "mocha": "mocha test",
     "chai": "curl https://raw.githubusercontent.com/chaijs/chai/master/chai.js -o test/chai.js",
     "sinon": "curl http://sinonjs.org/releases/sinon-1.12.2.js -o vendor/sinon-1.12.2.js",
@@ -22,6 +22,7 @@
   "homepage": "https://ULL-ESIT-GRADOII-PL.github.com/mocha-y-chai-ele-daniel-1/",
   "devDependencies": {
     "blanket": "^1.2.3",
+    "browserify": "^13.0.0",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
@@ -30,19 +31,20 @@
     "gulp-htmlmin": "^1.3.0",
     "gulp-uglify": "^1.5.3",
     "gulp-watch": "^4.3.5",
-<<<<<<< HEAD
-    "karma": "~0.8",
-    "karma-firefox-launcher": "^0.1.7",
-=======
     "karma": "^0.13.22",
+    "karma-browserify": "^5.0.3",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
     "karma-html2js-preprocessor": "^0.1.0",
->>>>>>> f4683ef457238881356641f3f0f6a19154657dde
     "karma-mocha": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "*",
     "mocha-loader": "^0.7.1",
     "node-static": "*",
     "uglify-js": "^2.6.2",
+    "watchify": "^3.7.0",
     "webpack": "^1.12.14",
     "webpack-stream": "^3.1.0"
   },
