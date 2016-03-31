@@ -1,6 +1,8 @@
 # Conversor de temperaturas
 [![Build Status](https://travis-ci.org/EleDiaz/karma-y-travis-ele-daniel-1.svg?branch=master)](https://travis-ci.org/EleDiaz/karma-y-travis-ele-daniel-1)
-[![Coverage Status](https://coveralls.io/repos/gith1ub/EleDiaz/karma-y-travis-ele-daniel-1/badge.svg?branch=master)](https://coveralls.io/github/EleDiaz/karma-y-travis-ele-daniel-1?branch=master)
+[![Coverage Status](https://coveralls.io/repos/gith1ub/EleDiaz/karma-y-travis-ele-daniel-1/badge.svg)](https://coveralls.io/github/EleDiaz/karma-y-travis-ele-daniel-1)
+
+
 
 Este conversor de temperatura usa **webpack** para minificar los js y organizar los módulos
 javascript instalados con node, es decir se usan require en source code webpack los procesa
