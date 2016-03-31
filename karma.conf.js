@@ -10,36 +10,90 @@ module.exports = function(config) {
     plugins: [
             'karma-mocha',
             'karma-firefox-launcher',
-            'karma-chrome-launcher',
+            'karma-coverage',
+            //'karma-chrome-launcher',
             'karma-sourcemap-loader',
             'karma-chai',
-            'karma-html2js-preprocessor',
+            //'karma-html2js-preprocessor',
             'karma-webpack'
         ],
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha', 'chai'],
-
+    /*
     client: {
           mocha: {
             reporter: 'html',
             ui: 'bdd'
           }
     },
-
-    // list of files / patterns to load in the browser
+    */
     files: [
       'test/test.js',
-      'test/index.html'
-      // {pattern: 'test/test.js', included: false}
+    ],
+
+    reporters: [
+        'progress',
+        'coverage'
+    ],
+
+    coverageReporter: {
+        dir: 'build/reports/coverage',
+        reporters: [
+            {
+                type: 'html',
+                subdir: 'report-html'
+            },
+            {
+                type: 'lcov',
+                subdir: 'report-lcov'
+            },
+            {
+                type: 'cobertura',
+                subdir: '.',
+                file: 'cobertura.txt'
+            }
+        ]
+    },
+
+    webpack: {
+        module: {
+            postLoaders: [
+                {
+                    test: /\.js$/,
+                    exclude: /(node_modules|resources\/js\/vendor)/,
+                    loader: 'istanbul-instrumenter'
+                }
+            ]
+        }
+    },
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+      'test/test.js': ['webpack', 'sourcemap'],
+      //'index.html': ['html2js']
+    },
+
+    webpackMiddleware: {
+        noInfo: true
+    },
+    /*
+    // list of files / patterns to load in the browser
+    files: [
+      //'test/test.js',
+      // 'vendor/vendor.bundle.js',
+      // 'vendor/test.js',
+      'test/index.html',
+      {pattern: 'vendor/vendor.bundle.js', included: true, served: true},
+      {pattern: 'vendor/test.js', included: true}
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/test.js': ['webpack', 'sourcemap'],
-      'test/index.html': ['html2js']
+      //'test/test.js': ['webpack', 'sourcemap'],
+      'index.html': ['html2js']
     },
 
     webpack: {
@@ -55,7 +109,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress'],
-
+    */
 
     // web server port
     port: 9876,
@@ -81,6 +135,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   });
 };
