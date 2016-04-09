@@ -1,3 +1,6 @@
+var XRegExp     = require("xregexp");
+var temperatura = require("./temperatura");
+
 (function(exports) {
     "use strict";
 
@@ -20,7 +23,6 @@
 
     Medida.match = function (input) {
             var measures = '[a-z]+';
-
             var inputRegex = XRegExp(
                 '^(\\s*)                                                  # whitespaces \n'
                     + '(?<value>       [-+]?\\d+ (?:[\\.,]\\d*)?\\s*)     # captures the number   \n'
@@ -38,9 +40,9 @@
     Medida.convertir = function(valor) {
         var measures = Medida.medidas;
 
-        measures.c = Celsius;
-        measures.f = Fahrenheit;
-        measures.k = Kelvin;
+        measures.c = temperatura.Celsius;
+        measures.f = temperatura.Fahrenheit;
+        measures.k = temperatura.Kelvin;
 
         var match = Medida.match(valor);
 

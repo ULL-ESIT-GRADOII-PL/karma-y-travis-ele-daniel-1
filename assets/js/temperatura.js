@@ -1,8 +1,10 @@
+var medida = require('./medida');
+
 (function(exports) {
     "use strict";
 
     function Temperatura(valor, tipo) {
-        Medida.call(this, valor, tipo);
+        medida.Medida.call(this, valor, tipo);
     }
 
     function Celsius(valor) {
